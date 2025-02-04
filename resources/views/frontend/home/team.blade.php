@@ -7,7 +7,7 @@
                 <div class="team-slider-two owl-carousel owl-theme pt-45">
                     <div class="team-item">
                         <a href="team.html">
-                            <img src="assets/img/team/team-img1.jpg" alt="Images">
+                        <img src="{{ asset('frontend/assets/img/team/team-img2.jpg') }}" alt="Images">
                         </a>
                         <div class="content">
                             <h3><a href="team.html">MD Rafiul Siddique</a></h3>
@@ -31,11 +31,11 @@
 
                     <div class="team-item">
                         <a href="team.html">
-                            <img src="assets/img/team/team-img2.jpg" alt="Images">
+                        <img src="{{ asset('frontend/assets/img/team/team-img3.jpg') }}" alt="Images">
                         </a>
                         <div class="content">
                             <h3><a href="team.html">Umme Marium Prity</a></h3>
-                            <span>Chief Reception Officer</span>
+                            <span>Manager</span>
                             <ul class="social-link">
                                 <li>
                                     <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
@@ -55,7 +55,7 @@
 
                     <div class="team-item">
                         <a href="team.html">
-                            <img src="assets/img/team/team-img5.jpg" alt="Images">
+                        <img src="{{ asset('frontend/assets/img/team/team-img6.jpg') }}" alt="Images">
                         </a>
                         <div class="content">
                             <h3><a href="team.html">Mahadi Hasan Rubel</a></h3>

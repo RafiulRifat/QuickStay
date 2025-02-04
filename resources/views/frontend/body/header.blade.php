@@ -25,6 +25,36 @@
                                     <a href="tel:+8801521307543">+880 1521 307543</a>
 
                                 </li>
+
+
+                            
+  @auth
+
+                                        <li>
+                                            <i class='bx bxs-user-pin'></i>
+                                             <a href="{{ route('dashboard') }}">Dashboard</a>
+                                       </li>
+
+                                         <li>
+                                        <i class='bx bxs-user-rectangle'></i>
+                                        <a href="{{ route('user.logout') }}">Logout</a>
+                                        </li>
+
+ @else
+
+                                          <li>
+                                               <i class='bx bxs-user-pin'></i>
+                                               <a href="{{ route('login') }}">Login</a>
+                                           </li>
+
+                                           <li>
+                                             <i class='bx bxs-user-rectangle'></i>
+                                            <a href="{{ route('register') }}">Register</a>
+                                         </li>
+    
+@endauth
+
+
                                 <li>
                                     <i class='bx bx-envelope'></i>
                                     <a href="mailto:rafiulsiddique301@gmail.com">rafiulsiddique301@gmail.com</a>
