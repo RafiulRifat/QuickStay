@@ -11,7 +11,7 @@
                                 <div class="col-lg-5 col-md-4 p-0">
                                     <div class="room-card-img">
                                         <a href="room-details.html">
-                                            <img src="assets/img/room/room-style-img1.jpg" alt="Images">
+                                        <img src="{{ asset('frontend/assets/img/room/room-style-img1.jpg') }}" alt="Images">
                                         </a>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                                 <div class="col-lg-5 col-md-4 p-0">
                                     <div class="room-card-img">
                                         <a href="room-details.html">
-                                            <img src="assets/img/room/room-style-img2.jpg" alt="Images">
+                                        <img src="{{ asset('frontend/assets/img/room/room-style-img2.jpg') }}" alt="Images">
                                         </a>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
                                 <div class="col-lg-5 col-md-4 p-0">
                                     <div class="room-card-img">
                                         <a href="room-details.html">
-                                            <img src="assets/img/room/room-style-img3.jpg" alt="Images">
+                                        <img src="{{ asset('frontend/assets/img/room/room-style-img3.jpg') }}" alt="Images">
                                         </a>
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
                                 <div class="col-lg-5 col-md-4 p-0">
                                     <div class="room-card-img">
                                         <a href="room-details.html">
-                                            <img src="assets/img/room/room-style-img4.jpg" alt="Images">
+                                        <img src="{{ asset('frontend/assets/img/room/room-style-img4.jpg') }}" alt="Images">
                                         </a>
                                     </div>
                                 </div>
