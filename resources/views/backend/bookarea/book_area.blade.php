@@ -25,9 +25,9 @@
     <div class="col-lg-8">
         <div class="card">
 
-            <form id="myForm" action="{{ route('team.store') }}" method="post" enctype="multipart/form-data">
+            <form  action="{{ route('book.area.update') }}" method="post" enctype="multipart/form-data">
                 @csrf
-
+                <input type="hidden" name="id" value="{{ $book->id }}">
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col-sm-3">
@@ -92,7 +92,8 @@
                         <h6 class="mb-0">  </h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="80">
+                    <img id="showImage" src="{{ asset($book->image) }}"
+                    alt="Admin" class="rounded-circle p-1 bg-primary" width="80">
                     </div>
                 </div>
                
