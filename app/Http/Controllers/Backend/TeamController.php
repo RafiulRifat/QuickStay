@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Team;
+use App\Models\BookArea; // Ensure this model exists
 use Carbon\Carbon;
 
 class TeamController extends Controller
@@ -92,6 +93,26 @@ class TeamController extends Controller
             return redirect()->back()->with($notification);
 
 
+    
         }   // End Method 
+
+
+
+// ================== Book Area ALL Methods ==================
+
+public function BookArea() {
+    $book = BookArea::find(1);
+    return view('backend.bookarea.book_area', compact('book'));
+
+
+
+} // End Method .
+
+
+
+
+
+
+
 }
 
