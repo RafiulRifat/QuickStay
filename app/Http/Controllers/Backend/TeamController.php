@@ -144,7 +144,7 @@ public function BookAreaUpdate(Request $request){
         ]);
         
         $notification = array(
-            'message' => 'Book Area Updated With Image Successfully',
+            'message' => 'Book Area Updated Without Image Successfully',
             'alert-type' => 'success'
         );
         
