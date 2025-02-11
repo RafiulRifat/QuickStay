@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Team;
-use App\Models\BookArea; // Ensure this model exists
+use App\Models\BookArea;
 use Carbon\Carbon;
+use Intervention\Image\Facades\Image;
 
 class TeamController extends Controller
 {
@@ -58,7 +59,7 @@ class TeamController extends Controller
             $name_gen = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
             $request->file('image')->move(public_path('upload/team/'), $name_gen);
             $save_url = 'upload/team/' . $name_gen;
-            
+
             $team->update([
                 'image' => $save_url,
             ]);
@@ -77,89 +78,76 @@ class TeamController extends Controller
         ]);
     }
 
-        public function DeleteTeam($id){
+    public function DeleteTeam($id)
+    {
+        $item = Team::findOrFail($id);
+        $img = $item->image;
+        unlink($img);
 
-            $item = Team::findOrFail($id);
-            $img = $item->image;
-            unlink($img);
+        Team::findOrFail($id)->delete();
 
-            Team::findOrFail($id)->delete();
-
-            $notification = array(
-                'message' => 'Team Image Deleted Successfully',
-                'alert-type' => 'success'
-            );
-
-            return redirect()->back()->with($notification);
-
-
-    
-        }   // End Method 
-
-
-
-// ================== Book Area ALL Methods ==================
-
-public function BookArea() {
-    $book = BookArea::find(1);
-    return view('backend.bookarea.book_area', compact('book'));
-
-
-
-} // End Method .
-
-
-
-public function BookAreaUpdate(Request $request){
-    $book_id = $request->id;
-
-    if ($request->file('image')) {
-        $image = $request->file('image');
-        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(1000, 1000)->save('upload/bookarea/' . $name_gen);
-        $save_url = 'upload/bookarea/' . $name_gen;
-    
-        BookArea::findOrFail($book_id)->update([
-            'short_title' => $request->short_title,
-            'main_title' => $request->main_title,
-            'short_desc' => $request->short_desc,
-            'link_url' => $request->link_url,
-            'image' => $save_url,
-        ]);
-        
         $notification = array(
-            'message' => 'Book Area Updated With Image Successfully',
+            'message' => 'Team Image Deleted Successfully',
             'alert-type' => 'success'
         );
-        
+
         return redirect()->back()->with($notification);
-    }            else {
-    
-        BookArea::findOrFail($book_id)->update([
-            'short_title' => $request->short_title,
-            'main_title' => $request->main_title,
-            'short_desc' => $request->short_desc,
-            'link_url' => $request->link_url,
-           
+    }
+
+    // ================== Book Area ALL Methods ==================
+
+    public function BookArea()
+    {
+        $book = BookArea::find(1);
+        return view('backend.bookarea.book_area', compact('book'));
+    }
+
+    public function BookAreaUpdate(Request $request)
+    {
+        $book_id = $request->id;
+
+        // Validate image input
+        $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        
-        $notification = array(
-            'message' => 'Book Area Updated Without Image Successfully',
+
+        // Initialize file path
+        $save_url = null;
+
+        // Check if image is uploaded
+        if ($request->hasFile('image')) {
+            // Store the image using Laravel's store() method
+            try {
+                $image = $request->file('image');
+                $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+                // Save image to public/bookarea folder
+                $save_url = $image->storeAs('public/bookarea', $name_gen);
+            } catch (\Exception $e) {
+                // Log error
+                \Log::error('Error uploading image: ' . $e->getMessage());
+                return redirect()->back()->withErrors('Image upload failed. Please try again.');
+            }
+        }
+
+        // Update the BookArea model
+        try {
+            BookArea::findOrFail($book_id)->update([
+                'short_title' => $request->short_title,
+                'main_title' => $request->main_title,
+                'short_desc' => $request->short_desc,
+                'link_url' => $request->link_url,
+                'image' => $save_url,
+            ]);
+        } catch (\Exception $e) {
+            // Log error
+            \Log::error('Error updating BookArea: ' . $e->getMessage());
+            return redirect()->back()->withErrors('Failed to update Book Area. Please try again.');
+        }
+
+        // Return success notification
+        return redirect()->back()->with([
+            'message' => 'Book Area Updated Successfully' . ($save_url ? ' with image' : ''),
             'alert-type' => 'success'
-        );
-        
-        return redirect()->back()->with($notification);
-    
-    } // End Else
-
-  
-
-} // End Method
-
-
+        ]);
+    }
 }
-
-
-
-
-
