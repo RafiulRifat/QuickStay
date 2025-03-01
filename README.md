@@ -136,7 +136,7 @@ Crafted with a focus on aesthetics and functionality using **Figma**.
 
 ### Prerequisites
 
-- PHP >= 10
+- PHP >= 8.2
 - Composer
 - MySQL
 - Node.js and npm
