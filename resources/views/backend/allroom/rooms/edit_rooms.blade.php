@@ -48,7 +48,8 @@
                                             <div class="card">
                                                 <div class="card-body p-4">
                                                     <h5 class="mb-4">Update Room</h5>
-                                                    <form class="row g-3">
+                                                    <form class="row g-3" action="{{ route('update.room', $editData->id) }}" method="post" enctype="multipart/form-data">
+                                                        @csrf
                                                         <div class="col-md-4">
                                                             <label for="input1" class="form-label">Room Type Name</label>
                                                             <input type="text" name="roomtype_id" class="form-control" id="input1"
@@ -84,7 +85,12 @@
                                                         </div>
                                                         
                                                         <div class="col-md-4">
-                                                            <label for="input2" class="form-label">Discount ( % )</label>
+                                                            <label for="input2" class="form-label"> Size </label>
+                                                            <input type="text" name="discount" class="form-control" id="input2" value="{{ $editData->size }}">
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <label for="input2" class="form-label"> Discount (%)  </label>
                                                             <input type="text" name="discount" class="form-control" id="input2" value="{{ $editData->discount }}">
                                                         </div>
                                                         
@@ -96,21 +102,22 @@
                                                         <div class="col-md-6">
                                                             <label for="input7" class="form-label">Room View</label>
                                                             <select name="view" id="input7" class="form-select">
-                                                                <option selected=""></choose...</option>
-                                                                <option value="Sea View">Sea View</option>
-                                                                <option value="Hi11 View">Hi11 View</option>
+                                                                <option selected="">Choose...</option>
+                                                                <option value="Sea View" {{ $editData->view == 'Sea View' ? 'selected' : '' }}>Sea View</option>
+                                                                <option value="Hi11 View" {{ $editData->view == 'Hi11 View' ? 'selected' : '' }}>Hi11 View</option>
                                                             </select>
                                                         </div>
                                                         
                                                         <div class="col-md-6">
                                                             <label for="input7" class="form-label">Bed Style</label>
                                                             <select name="bed_style" id="input7" class="form-select">
-                                                                <option selected=""></choose...</option>
-                                                                <option value="Queen Bed">Queen Bed</option>
-                                                                <option value="Twin Bed">Twin Bed</option>
-                                                                <option value="King Bed">King Bed</option>
+                                                                <option selected="">Choose...</option>
+                                                                <option value="Queen Bed" {{ isset($edithata) && $edithata->bed_style == 'Queen Bed' ? 'selected' : '' }}>Queen Bed</option>
+                                                                <option value="Twin Bed" {{ isset($edithata) && $edithata->bed_style == 'Twin Bed' ? 'selected' : '' }}>Twin Bed</option>
+                                                                <option value="King Bed" {{ isset($edithata) && $edithata->bed_style == 'King Bed' ? 'selected' : '' }}>King Bed</option>
                                                             </select>
                                                         </div>
+                                                        
 
                                                         <div class="col-md-12">
                                                             <label for="input11" class="form-label">Short Description</label>
@@ -160,7 +167,7 @@
                                                                      </div>
                                                                      <div class="col-md-4">
                                                                         <div class="form-group" style="padding-top: 30px;">
-                                                                              <a class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></a>
+                                                                            <a class="btn btn-success addeventmore"><i class="1ni 1ni-circle-plus"></i></a>
                                                                               <span class="btn btn-danger btn-sm removeeventmore"><i class="fa fa-minus-circle"></i></span>
                                                                         </div>
                                                                      </div>
