@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Room;
+use App\Models\RoomType;
 use App\Models\Facility;
 use App\Models\MultiImage;
 use Intervention\Image\Facades\Image;
@@ -169,7 +170,46 @@ return redirect()->back()->with($notification);
 
 
 
+public function DeleteRoom(Request $request, $id)
+{
+    $room = Room::find($id);
+
+    if (!$room) {
+        return redirect()->back()->with([
+            'message' => 'Room Not Found',
+            'alert-type' => 'error'
+        ]);
+    }
+
+    // Delete the main room image if it exists
+    if (!empty($room->image) && file_exists(public_path('upload/roomimg/' . $room->image))) {
+        @unlink(public_path('upload/roomimg/' . $room->image));
+    }
+
+    // Delete sub-images if they exist
+    $subimages = MultiImage::where('rooms_id', $room->id)->get();
+    foreach ($subimages as $subimage) {
+        if (!empty($subimage->multi_img) && file_exists(public_path('upload/roomimg/multi_img/' . $subimage->multi_img))) {
+            @unlink(public_path('upload/roomimg/multi_img/' . $subimage->multi_img));
+        }
+    }
+
+    // Delete related records
+    RoomType::where('id', $room->roomtype_id)->delete();
+    MultiImage::where('rooms_id', $room->id)->delete();
+    Facility::where('rooms_id', $room->id)->delete();
     
+
+    // Delete the room
+    $room->delete();
+
+    // Prepare notification
+    return redirect()->back()->with([
+        'message' => 'Room Deleted Successfully',
+        'alert-type' => 'success'
+    ]);
+}
+
 
 
 
