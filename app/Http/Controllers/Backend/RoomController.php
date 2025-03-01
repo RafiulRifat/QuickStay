@@ -12,11 +12,14 @@ use Carbon\Carbon;
 
 class RoomController extends Controller
 {
+
     public function EditRoom($id){
         $basic_facility = Facility::where('rooms_id', $id)->get();
+        $multiimgs = MultiImage::where('rooms_id', $id)->get();
         $editData = Room::find($id);
-        return view('backend.allroom.rooms.edit_rooms', compact('editData', 'basic_facility'));
-    } // End Method
+        return view('backend.allroom.rooms.edit_rooms', compact('editData', 'basic_facility', 'multiimgs'));
+    }
+    
 
 
 
@@ -127,23 +130,46 @@ return redirect()->back()->with($notification);
 
 
 
+    } //end method
 
 
+    public function MultiImageDelete($id){
+
+        $deletedata = MultiImage::where('id', $id)->first();
+    
+        if($deletedata){
+    
+            $imagePath = $deletedata->multi_img;
+    
+            // Check if the file exists before unlinking
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+                echo "Image Unlinked Successfully";
+            } else {
+                echo "Image does not exist";
+            }
+    
+            // Delete the record form database
 
 
-
-
-
-
-
-
-
-
-
-
+            // Delete the record from database
+             MultiImage::where('id', $id)->delete();
 
 
     }
+
+    $notification = array(
+        'message' => 'Multi Image Deleted Successfully',
+        'alert-type' => 'success'
+    );
+    
+    return redirect()->back()->with($notification);
+
+}// end method
+
+
+
+    
 
 
 
