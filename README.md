@@ -16,22 +16,21 @@
 
 ## 🌐 Project Overview
 
-**QuickStay Hotel Management System** is a dynamic, feature-rich platform designed to revolutionize hotel operations.  
-Whether you're an administrator or a customer, QuickStay offers an intuitive interface to manage bookings, payments, and staff effortlessly.
+**QuickStay Hotel Management System** is a dynamic, feature-rich platform designed to revolutionize hotel operations. Whether you're an administrator or a customer, QuickStay offers an intuitive interface to manage bookings, payments, and staff effortlessly.
 
 ### ✨ Key Highlights
 
--   **Streamlined Booking:** Hassle-free room reservation and secure payments via Stripe.
--   **Powerful Admin Tools:** Manage content, staff, and resources with ease.
--   **Exceptional User Experience:** Responsive, user-friendly design for any device.
+- **Streamlined Booking:** Hassle-free room reservation and secure payments via Stripe.
+- **Powerful Admin Tools:** Manage content, staff, and resources with ease.
+- **Exceptional User Experience:** Responsive, user-friendly design for any device.
 
 ### 🎯 Objective
 
 To create a centralized platform that:
 
--   Simplifies hotel management operations.
--   Provides customers with a seamless booking journey.
--   Empowers administrators with robust control over resources.
+- Simplifies hotel management operations.
+- Provides customers with a seamless booking journey.
+- Empowers administrators with robust control over resources.
 
 ---
 
@@ -51,33 +50,33 @@ To create a centralized platform that:
 
 ### 🌍 Website
 
--   **Home Page:** Spotlight on hotel services and amenities.
--   **Gallery:** Visually stunning display of rooms and facilities.
--   **Services:** Comprehensive overview of available amenities.
--   **About Us:** Insight into the hotel’s mission and values.
--   **Testimonials:**
-    -   Submit reviews (login required).
-    -   Admin-approved public display.
--   **Booking Page:**
-    -   Filter by availability, capacity, and type.
-    -   Select check-in and check-out dates.
--   **Contact Page:** Direct inquiries to the hotel team.
--   **FAQ Page:** Address common questions effectively.
+- **Home Page:** Spotlight on hotel services and amenities.
+- **Gallery:** Visually stunning display of rooms and facilities.
+- **Services:** Comprehensive overview of available amenities.
+- **About Us:** Insight into the hotel’s mission and values.
+- **Testimonials:**
+  - Submit reviews (login required).
+  - Admin-approved public display.
+- **Booking Page:**
+  - Filter by availability, capacity, and type.
+  - Select check-in and check-out dates.
+- **Contact Page:** Direct inquiries to the hotel team.
+- **FAQ Page:** Address common questions effectively.
 
 ### 🔑 Admin Panel
 
--   **Authentication:** Secure login and password recovery.
--   **Content Management:**
-    -   Manage Home, Gallery, About Us, and FAQ content.
-    -   View and respond to customer inquiries.
--   **Room Management:**
-    -   Add, edit, or remove rooms and categories.
--   **Booking Management:** Oversee and organize customer reservations.
--   **Testimonial Approval:** Curate customer feedback.
--   **Staff Management:**
-    -   Maintain staff profiles and salaries.
--   **Customer Management:**
-    -   Manage profiles and track payments.
+- **Authentication:** Secure login and password recovery.
+- **Content Management:**
+  - Manage Home, Gallery, About Us, and FAQ content.
+  - View and respond to customer inquiries.
+- **Room Management:**
+  - Add, edit, or remove rooms and categories.
+- **Booking Management:** Oversee and organize customer reservations.
+- **Testimonial Approval:** Curate customer feedback.
+- **Staff Management:**
+  - Maintain staff profiles and salaries.
+- **Customer Management:**
+  - Manage profiles and track payments.
 
 ---
 
@@ -85,9 +84,9 @@ To create a centralized platform that:
 
 Crafted with a focus on aesthetics and functionality using **Figma**.
 
--   Responsive and modern, leveraging **Bootstrap 5** for seamless adaptability.
+- Responsive and modern, leveraging **Bootstrap 5** for seamless adaptability.
 
-📌 **[Access Figma Design](<https://www.figma.com/design/zEtZjsbDNTuRrPsPtzoNl4/QuickStay(Hotel-Mangement-Portal)?node-id=0-1&t=38KaqmTpbDw6dDbC-1>)**
+📌 **[Access Figma Design](https://www.figma.com/design/zEtZjsbDNTuRrPsPtzoNl4/QuickStay(Hotel-Mangement-Portal)?node-id=0-1&t=38KaqmTpbDw6dDbC-1)**
 
 ---
 
@@ -107,21 +106,29 @@ Crafted with a focus on aesthetics and functionality using **Figma**.
 
 ### Milestone 1: Foundation
 
--   Set up Laravel project architecture.
--   Implement authentication (registration and login).
--   Develop the admin panel dashboard.
+- Set up Laravel project architecture.
+- Implement authentication (registration and login).
+- Develop the admin panel dashboard.
 
 ### Milestone 2: Core Features
 
--   Integrate Stripe Payment Gateway.
--   Enable room booking functionality with filters.
--   Develop CRUD operations for rooms and staff.
+- Set up RoomType Area.
+- Add Advanced Room Setup.
+- Add Advanced Room Number Setup.
+- Delete Room From Multiple Tables.
+- Show Team in Frontend Home Page.
+- Show Booking Area in Frontend Home Page.
+- Show Book Room In Frontend Home Page.
+- Show Room List Page in Frontend.
 
 ### Milestone 3: Final Touches
 
--   Finalize website content (Gallery, Services, FAQ, etc.).
--   Implement testimonial submission and approval.
--   Conduct thorough testing and deploy the application.
+- Integrate Stripe Payment Gateway.
+- Enable room booking functionality with filters.
+- Develop CRUD operations for rooms and staff.
+- Finalize website content (Gallery, Services, FAQ, etc.).
+- Implement testimonial submission and approval.
+- Conduct thorough testing and deploy the application.
 
 ---
 
@@ -129,7 +136,8 @@ Crafted with a focus on aesthetics and functionality using **Figma**.
 
 ### Prerequisites
 
--   PHP = 10
--   Composer
--   MySQL
--   Node.js and npm
+- PHP >= 8.2
+- Composer
+- MySQL
+- Node.js and npm
+
