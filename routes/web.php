@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\TeamController;
 use App\Http\Controllers\Backend\RoomTypeController;
+use App\Http\Controllers\Backend\RoomController;
+
 
 
 
@@ -73,6 +75,21 @@ Route::controller(RoomTypeController::class)->group(function(){
     Route::get('/add/room/type', 'AddRoomType')->name('add.room.type');
     Route::post('/room/type/store', 'RoomTypeStore')->name('room.type.store'); 
 });
+
+
+
+
+// Room ALL Route
+Route::controller(RoomController::class)->group(function(){
+    Route::get('/edit/room/{id}', 'EditRoom')->name('edit.room');
+});
+
+
+
+
+
+
+
 
 
 // End Admin Group Middleware
