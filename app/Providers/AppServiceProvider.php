@@ -20,7 +20,10 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
-    {
+{
+    $sqlFile = database_path('sql/schema.sql'); // Path to your schema.sql file
 
-    }
+    
+}
+
 }

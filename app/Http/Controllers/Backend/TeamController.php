@@ -8,6 +8,8 @@ use App\Models\Team;
 use App\Models\BookArea;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Log;
+
 
 class TeamController extends Controller
 {
