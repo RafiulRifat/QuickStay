@@ -9,7 +9,8 @@ class Room extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function type(){
-        return $this->belongsTo(RoomType::class, 'roomtype_id', 'id');
-    }
+    public function type()
+{
+    return $this->belongsTo(RoomType::class, 'roomtype_id');
+}
 }

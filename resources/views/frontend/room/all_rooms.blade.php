@@ -28,14 +28,12 @@
            @foreach ($rooms as $item)
             <div class="col-lg-4 col-md-6">
                 <div class="room-card">
-                    <a href="{{ url('room-details/'.$item->id) }}">
+                    <a href="{{ url('room/details/'.$item->id) }}">
                         <img src="{{ asset('upload/roomimg/' . $item->image) }}" alt="Room Image" style="width: 550px; height:300px;">
                     </a>
                     <div class="content">
                         <h6>
-                            <a href="{{ url('room-details/'.$item->id) }}">
-                                {{ optional($item->type)->name ?? 'No Type Available' }}
-                            </a>
+                            <h6><a href="{{ url('room/details/'.$item->id) }}">{{ $item['type']['name'] }}</a></h6>
                         </h6>
                         <ul>
                             <li class="text-color">${{ $item->price }}</li>
