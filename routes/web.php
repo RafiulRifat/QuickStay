@@ -115,6 +115,9 @@ Route::get('/delete/room/{id}', [RoomController::class, 'deleteRoom'])->name('de
     Route::get('/room/details/{id}', 'RoomDetailsPage');
 
     Route::get('/bookings/', 'BookingSeach')->name('booking.search');
+    Route::get('/search/room/details/{id}', 'SearchRoomDetails')->name('search_room_details');
+    Route::get('/check_room_availability/', 'CheckRoomAvailability')->name('check_room_availability');
+    
 
 });
    
