@@ -114,6 +114,7 @@ Route::get('/delete/room/{id}', [RoomController::class, 'deleteRoom'])->name('de
     Route::get('/rooms/', 'AllFrontendRoomList')->name('froom.all');
     Route::get('/room/details/{id}', 'RoomDetailsPage');
 
+    Route::get('/bookings/', 'BookingSeach')->name('booking.search');
 
 });
    
