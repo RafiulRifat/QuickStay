@@ -6,7 +6,9 @@
     <div class="container">
         <div class="inner-title">
             <ul>
-                <li><a href="{{ url('/') }}">Home</a></li>
+                <li>
+                    <a href="{{ url('/') }}">Home</a>
+                </li>
                 <li><i class='bx bx-chevron-right'></i></li>
                 <li>Rooms</li>
             </ul>
@@ -24,35 +26,33 @@
             <h2>Our Rooms & Rates</h2>
         </div>
         <div class="row pt-45">
-
-           @foreach ($rooms as $item)
-            <div class="col-lg-4 col-md-6">
-                <div class="room-card">
-                    <a href="{{ url('room-details/'.$item->id) }}">
-                        <img src="{{ asset('upload/roomimg/' . $item->image) }}" alt="Room Image" style="width: 550px; height:300px;">
-                    </a>
-                    <div class="content">
-                        <h6>
-                            <a href="{{ url('room-details/'.$item->id) }}">
-                                {{ optional($item->type)->name ?? 'No Type Available' }}
-                            </a>
-                        </h6>
-                        <ul>
-                            <li class="text-color">${{ $item->price }}</li>
-                            <li class="text-color">Per Night</li>
-                        </ul>
-                        <div class="rating text-color">
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star-half'></i>
+            @foreach ($rooms as $item)
+                <div class="col-lg-4 col-md-6">
+                    <div class="room-card">
+                        <a href="{{ url('room/details/'.$item->id) }}">
+                            <img src="{{ asset('upload/roomimg/'.$item->image) }}" alt="Room Image" style="width: 550px; height: 300px;">
+                        </a>
+                        <div class="content">
+                            <h6>
+                                <a href="{{ url('room/details/'.$item->id) }}">
+                                    {{ optional($item->type)->name ?? 'No Type Available' }}
+                                </a>
+                            </h6>
+                            <ul>
+                                <li class="text-color">${{ $item->price }}</li>
+                                <li class="text-color">Per Night</li>
+                            </ul>
+                            <div class="rating text-color">
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star-half'></i>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div> 
-           @endforeach
-
+                </div> 
+            @endforeach
         </div>
     </div>
 </div>

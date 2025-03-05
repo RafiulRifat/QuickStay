@@ -32,30 +32,19 @@
                             <a href="#" class="nav-link"> Blog </a>
                         </li>
 
-                        @php
-                            // Fetch rooms and eager-load the 'type' relationship
-                            $rooms = App\Models\Room::with('type')->latest()->get();
-                        @endphp
-
+                        <!-- Dropdown for Rooms -->
                         <li class="nav-item">
                             <a href="{{ route('froom.all') }}" class="nav-link">
                                 All Rooms
                                 <i class='bx bx-chevron-down'></i>
                             </a>
                             <ul class="dropdown-menu">
-                                @foreach ($rooms as $item) 
-                                    <li class="nav-item">
-                                        <a href="room.html" class="nav-link">
-                                            Rooms 
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="room-details.html" class="nav-link">
-                                            Room Details 
-                                            {{ optional($item->type)->name }} <!-- Prevent null error -->
-                                        </a>
-                                    </li>
-                                @endforeach
+                                <li class="nav-item">
+                                    <a href="room.html" class="nav-link"> Rooms </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="room-details.html" class="nav-link"> Room Details </a>
+                                </li>
                             </ul>
                         </li>
 

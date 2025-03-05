@@ -14,6 +14,7 @@ use App\Http\Controllers\Frontend\FrontendRoomController;
 
 
 
+
 //Route::get('/', function () {
   //  return view('welcome');
 //});
@@ -63,7 +64,7 @@ Route::middleware(['auth','roles:admin'])->group(function(){
        Route::get('/delete/team/{id}', 'DeleteTeam')->name('delete.team');
    
    });
-   /// Book Area ALL Route
+    /// Book Area ALL Route
 Route::controller(TeamController::class)->group(function(){
     Route::get('/book/area', 'BookArea')->name('book.area');
     Route::post('/book/area/update', 'BookAreaUpdate')->name('book.area.update');
@@ -83,6 +84,9 @@ Route::controller(RoomTypeController::class)->group(function(){
 // Room ALL Route
 Route::controller(RoomController::class)->group(function(){
     Route::get('/edit/room/{id}', 'EditRoom')->name('edit.room');
+    Route::get('/room/details/{id}', 'RoomDetailsPage');
+    Route::post('/update/room/{id}', 'UpdateRoom')->name('update.room'); // Corrected the route for updating the room
+    Route::get('/room/details/{id}', 'RoomDetailsPage');
 });
 
 
