@@ -25,7 +25,8 @@
             <div class="col-lg-4">
                 <div class="room-details-side">
                     <div class="side-bar-form">
-                        <h3>Booking Sheet </h3><form action="{{ route('user_booking_store',$roomdetails->id) }}" method="post" id="bk_form">
+                        <h3>Booking Sheet </h3>
+                        <form action="{{ route('user_booking_store',$roomdetails->id) }}" method="post" id="bk_form">
                             @csrf
                             <input type="hidden" name="room_id" value="{{ $roomdetails->id }}">
     <div class="row align-items-center">

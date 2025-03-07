@@ -15,6 +15,8 @@ use App\Http\Controllers\Frontend\BookingController;
 
 
 
+
+
 //Route::get('/', function () {
   //  return view('welcome');
 //});
@@ -115,17 +117,16 @@ Route::get('/delete/room/{id}', [RoomController::class, 'deleteRoom'])->name('de
    }); // End Admin Group Middleware 
 
    /// Room All Route 
- Route::controller(FrontendRoomController::class)->group(function(){
 
+
+   Route::controller(FrontendRoomController::class)->group(function () {
     Route::get('/rooms/', 'AllFrontendRoomList')->name('froom.all');
     Route::get('/room/details/{id}', 'RoomDetailsPage');
-
-    Route::get('/bookings/', 'BookingSeach')->name('booking.search');
+    Route::get('/bookings/', 'BookingSearch')->name('booking.search');  // Fixed typo here
     Route::get('/search/room/details/{id}', 'SearchRoomDetails')->name('search_room_details');
     Route::get('/check_room_availability/', 'CheckRoomAvailability')->name('check_room_availability');
-    
-
 });
+
 
 
 // Auth Middleware User must have login for access this route 
@@ -136,8 +137,7 @@ Route::controller(BookingController::class)->group(function(){
 
    Route::get('/checkout/', 'Checkout')->name('checkout');
    Route::post('/booking/store/', 'BookingStore')->name('user_booking_store');
-   Route::post('/checkout/store/', 'CheckoutStore')->name('checkout.store');
-    
+
 
 });
 

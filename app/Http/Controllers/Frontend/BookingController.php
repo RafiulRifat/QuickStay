@@ -16,6 +16,7 @@ use App\Models\RoomBookedDate;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
 
+
 class BookingController extends Controller
 {
     public function Checkout(){
@@ -43,6 +44,7 @@ class BookingController extends Controller
 
 
 
+  
     public function BookingStore(Request $request){
 
         $validateData = $request->validate([
@@ -54,7 +56,7 @@ class BookingController extends Controller
         ]);
 
         if ($request->available_room < $request->number_of_rooms) {
-           
+
             $notification = array(
                 'message' => 'Something want to wrong!',
                 'alert-type' => 'error'
@@ -76,6 +78,7 @@ class BookingController extends Controller
         return redirect()->route('checkout');
 
     }// End Method 
+
 
 
 

@@ -20,11 +20,12 @@ class FrontendRoomController extends Controller
 
         $rooms = Room::latest()->get();
         return view('frontend.room.all_rooms',compact('rooms'));
+
+
     } // End Method 
 
 
-
-
+    
     public function RoomDetailsPage($id){
 
         $roomdetails = Room::find($id);
@@ -35,6 +36,11 @@ class FrontendRoomController extends Controller
         return view('frontend.room.room_details',compact('roomdetails','multiImage','facility','otherRooms'));
 
     } // End Method 
+
+
+
+
+   
     public function BookingSeach(Request $request){
    
         $request->flash();
