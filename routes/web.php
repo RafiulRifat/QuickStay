@@ -22,14 +22,15 @@ use App\Http\Controllers\Frontend\BookingController;
 Route::get('/', [UserController::class, 'Index']);
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('frontend.dashboard.user_dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+    Route::get('/profile', [UserController::class, 'UserProfile'])->name('user.profile');
+    Route::post('/profile/store', [UserController::class, 'UserStore'])->name('profile.store');
+    Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
+});  Route::get('/user/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
+Route::post('/password/change/password', [UserController::class, 'ChangePasswordStore'])->name('password.change.store');
 
 require __DIR__.'/auth.php';
 
