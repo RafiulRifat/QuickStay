@@ -108,6 +108,15 @@ Route::get('/delete/room/{id}', [RoomController::class, 'deleteRoom'])->name('de
 
 // End Admin Group Middleware
 
+ /// Admin Booking All Route 
+ Route::controller(BookingController::class)->group(function(){
+
+    Route::get('/booking/list', 'BookingList')->name('booking.list');
+
+
+});
+
+
 
 
 
