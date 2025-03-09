@@ -8,6 +8,9 @@ use App\Http\Controllers\Backend\TeamController;
 use App\Http\Controllers\Backend\RoomTypeController;
 use App\Http\Controllers\Backend\RoomController;
 use App\Http\Controllers\Frontend\FrontendRoomController;
+use App\Http\Controllers\Frontend\BookingController;
+
+
 
 
 
@@ -21,14 +24,15 @@ use App\Http\Controllers\Frontend\FrontendRoomController;
 Route::get('/', [UserController::class, 'Index']);
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('frontend.dashboard.user_dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+    Route::get('/profile', [UserController::class, 'UserProfile'])->name('user.profile');
+    Route::post('/profile/store', [UserController::class, 'UserStore'])->name('profile.store');
+    Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
+});  Route::get('/user/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
+Route::post('/password/change/password', [UserController::class, 'ChangePasswordStore'])->name('password.change.store');
 
 require __DIR__.'/auth.php';
 
@@ -85,6 +89,10 @@ Route::controller(RoomController::class)->group(function(){
     Route::get('/edit/room/{id}', 'EditRoom')->name('edit.room');
     Route::post('/update/room/{id}', 'UpdateRoom')->name('update.room');
     Route::get('/multi/image/delete/{id}', 'MultiImageDelete')->name('multi.image.delete');
+    Route::post('/store/room/no/{id}', 'StoreRoomNumber')->name('store.room.no');
+    Route::get('/edit/roomno/{id}', 'EditRoomNumber')->name('edit.roomno');
+    Route::post('/update/roomno/{id}', 'UpdateRoomNumber')->name('update.roomno');
+    Route::get('/delete/roomno/{id}', 'DeleteRoomNumber')->name('delete.roomno');
     
 Route::get('/delete/room/{id}', [RoomController::class, 'deleteRoom'])->name('delete.room');
 });
@@ -109,10 +117,46 @@ Route::get('/delete/room/{id}', [RoomController::class, 'deleteRoom'])->name('de
    }); // End Admin Group Middleware 
 
    /// Room All Route 
- Route::controller(FrontendRoomController::class)->group(function(){
 
+
+   Route::controller(FrontendRoomController::class)->group(function () {
     Route::get('/rooms/', 'AllFrontendRoomList')->name('froom.all');
+    Route::get('/room/details/{id}', 'RoomDetailsPage');
+    Route::get('/bookings/', 'BookingSearch')->name('booking.search');  // Fixed typo here
+    Route::get('/search/room/details/{id}', 'SearchRoomDetails')->name('search_room_details');
+    Route::get('/check_room_availability/', 'CheckRoomAvailability')->name('check_room_availability');
+});
+
+
+
+// Auth Middleware User must have login for access this route 
+Route::middleware(['auth'])->group(function(){
+
+    /// CHECKOUT ALL Route 
+Route::controller(BookingController::class)->group(function(){
+
+   Route::get('/checkout/', 'Checkout')->name('checkout');
+   Route::post('/booking/store/', 'BookingStore')->name('user_booking_store');
 
 
 });
+
+
+
+
+
+ /// Admin Booking All Route 
+ Route::controller(BookingController::class)->group(function(){
+ 
+    Route::get('/booking/list', 'BookingList')->name('booking.list');
+    
+      
+});
+
+
+
+}); // End Group Auth Middleware
+
+
+
    
